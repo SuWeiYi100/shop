@@ -7,17 +7,16 @@
         </view>
         <!-- #endif -->
         
-        <!-- 头部轮播 -->
+        <!-- 轮播 -->
         <view class="carousel-section">
         	<view class="titleNview-placing"></view>
-        	<!-- 背景色区域 -->
+        	<!-- 背景 -->
         	<view class="titleNview-background" :style="{backgroundColor:titleNViewBackground}"></view>
         	<swiper class="carousel" autoplay interval="3000" circular @change="swiperChange">
         		<swiper-item v-for="(item, index) in carouselList" :key="index" class="carousel-item" @click="navToDetailPage({title: '轮播广告'})">
         			<image :src="item.src" />
         		</swiper-item>
         	</swiper>
-        	<!-- 自定义swiper指示器 -->
         	<view class="swiper-dots">
         		<text class="num">{{swiperCurrent+1}}</text>
         		<text class="sign">/</text>
@@ -50,20 +49,17 @@
         <view class="ad-1">
         	<image src="/static/temp/ad1.jpg" mode="scaleToFill"></image>
         </view>
-        <!-- 秒杀楼层 -->
+        <!-- 秒杀 -->
         <view class="seckill-section m-t">
         	<view class="s-header">
         		<image class="s-img" src="/static/temp/secskill-img.jpg" mode="widthFix"></image>
         		<text class="tip">8点场</text>
-        		<!-- <text class="hour timer">{{String(hour).length == 2 ? hour : '0' + hour}}</text>
-        		<text class="minute timer">{{String(minute).length == 2 ? minute : '0' + minute}}</text>
-        		<text class="second timer">{{String(second).length == 2 ? second : '0' + second}}</text> -->
                 <uni-countdown :show-day="false" :hour="10" :minute="12" :second="12"></uni-countdown>
         		<text class="yticon icon-you"></text>
         	</view>
         	<scroll-view class="floor-list" scroll-x>
         		<view class="scoll-wrapper">
-        			<view v-for="(item, index) in goodsList" :key="index" class="floor-item" @click="navToDetailPage(item)">
+        			<view v-for="(item, index) in goodsList" :key="index" class="floor-item" @click="navToDetailPage(item.id)">
         				<image :src="item.goods_img" mode="aspectFill"></image>
         				<text class="title clamp">{{item.goods_name}}</text>
         				<text class="price">￥{{item.goods_price}}</text>
@@ -82,8 +78,8 @@
         </view>
         <view class="group-section">
         	<swiper class="g-swiper" :duration="500">
-        		<swiper-item class="g-swiper-item" v-for="(item, index) in goodsList" :key="index" v-if="index%2 === 0" @click="navToDetailPage(item)">
-        			<view class="g-item left">
+        		<swiper-item class="g-swiper-item" v-for="(item, index) in goodsList" :key="index" v-if="index%2 === 0">
+        			<view class="g-item left" @click="navToDetailPage(item.id)">
         				<image :src="item.goods_img" mode="aspectFill"></image>
         				<view class="t-box">
         					<text class="title clamp">{{item.goods_name}}</text>
@@ -91,7 +87,6 @@
         						<text class="price">￥{{item.goods_price}}</text>
         						<text class="m-price">￥188</text>
         					</view>
-        
         					<view class="pro-box">
         						<view class="progress-box">
         							<progress percent="72" activeColor="#fa436a" active stroke-width="6" />
@@ -101,7 +96,7 @@
         				</view>
         
         			</view>
-        			<view class="g-item right">
+        			<view class="g-item right" @click="navToDetailPage(item.id+1)">
         				<image :src="goodsList[index+1].goods_img" mode="aspectFill"></image>
         				<view class="t-box">
         					<text class="title clamp">{{goodsList[index+1].goods_name}}</text>
@@ -131,7 +126,7 @@
         	<text class="yticon icon-you"></text>
         </view>
         <view class="guess-section">
-        	<view v-for="(item, index) in goodsList" :key="index" class="guess-item" @click="navToDetailPage(item)">
+        	<view v-for="(item, index) in goodsList" :key="index" class="guess-item" @click="navToDetailPage(item.id)">
         		<view class="image-wrapper">
         			<image :src="item.goods_img" mode="aspectFill"></image>
         		</view>
@@ -191,8 +186,8 @@ export default {
         	this.swiperCurrent = index;
         	this.titleNViewBackground = this.carouselList[index].background;
         },
-        navToDetailPage(item){
-            let id = item.id;
+        navToDetailPage(id){
+            //let id = item.id;
             uni.navigateTo({
             	url: `/pages/product/product?id=${id}`
             })
@@ -372,7 +367,6 @@ export default {
 		}
 	}
 
-	/* 秒杀专区 */
 	.seckill-section {
 		padding: 4upx 30upx 24upx;
 		background: #fff;
@@ -480,7 +474,7 @@ export default {
 		}
 	}
 
-	/* 团购楼层 */
+	
 	.group-section {
 		background: #fff;
 

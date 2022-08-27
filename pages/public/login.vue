@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<view class="left-bottom-sign"></view>
-		<view class="back-btn yticon icon-zuojiantou-up" @click="navBack"></view>
+		<!-- <view class="back-btn yticon icon-zuojiantou-up" @click="navBack"></view> -->
 		<view class="right-top-sign"></view>
 		<!-- 设置白色背景防止软键盘把下部绝对定位元素顶上来盖住输入框等 -->
 		<view class="wrapper">
@@ -20,9 +20,6 @@
 				</view>
 			</view>
 			<button class="confirm-btn" @click="toLogin">登录</button>
-			<view class="forget-section" @click="update()">
-				修改密码
-			</view>
 		</view>
 		<view class="register-section">
 			还没有账号?
@@ -51,15 +48,10 @@
 
 		},
 		methods: {
-			...mapMutations(['changeLogin']),
+			...mapMutations(['changeLogin','loginUserInfo']),
 			navBack() {
 				uni.navigateBack();
 			},
-            update(){
-                uni.navigateTo({
-                    url:'/pages/public/update'
-                })
-            },
 			toRegist() {
 				uni.navigateTo({
 				    url:'/pages/public/register'
@@ -76,11 +68,13 @@
                     	method: "POST",
                         data: _this.loginForm
                     })
-                    //console.log(res);
+                    console.log(res);
                     if(res.statusCode == 200){
                         _this.userToken = 'Bearer ' + res.data.result.token;
+                        _this.userInfo = res.data.result.res.user_name;
                         // 将用户token保存到vuex中
                         _this.changeLogin({ Authorization: _this.userToken });
+                        _this.loginUserInfo({ userInfo: _this.userInfo });
                         uni.switchTab({
                         	url: '/pages/index/index'
                         });    
@@ -88,10 +82,10 @@
                     }else{
                         alert('登录失败')
                     }
-                    
                 }catch(err){
                     console.log(err);
-                }
+                }    
+                
 			}
 		}
     }
@@ -107,7 +101,7 @@
 		padding-top: 115px;
 		position: relative;
 		width: 100vw;
-		height: 85.8vh;
+		height: 100vh;
 		overflow: hidden;
 		background: #fff;
 	}

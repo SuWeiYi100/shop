@@ -74,7 +74,7 @@
     	padding-top: 115px;
     	position: relative;
     	width: 100vw;
-    	height: 85.8vh;
+    	height: 100vh;
     	overflow: hidden;
     	background: #fff;
     }

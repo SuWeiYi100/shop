@@ -7,7 +7,7 @@
             		<image class="portrait" :src="userInfo.avatarUrl || '/static/missing-face.png'"></image>
             	</view>
             	<view class="info-box">
-            		<view class="username">{{userInfo.nickName || '游客'}}</view>
+            		<view class="username">{{ username || '游客'}}</view>
             		<view class="usermobile">手机号:{{userInfo.mobile || '暂无手机号'}}</view>
             	</view>
             </view>
@@ -44,11 +44,13 @@ export default {
         return {
             coverTransform: 'translateY(0px)',
             coverTransition: '0s',
-            userInfo:''
+            userInfo:'',
+            username:''
         };
     },
     onLoad() {
         this.loadData(); 
+        this.username = this.$store.state.userInfo;
     },
     computed: {
 

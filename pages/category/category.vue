@@ -39,7 +39,7 @@
 		methods: {
 			async loadData() {
 				let list = await this.$api.json('cateList');
-                console.log(list);
+                //console.log(list);
 				list.forEach(item => {
 					if (!item.pid) {
 						this.flist.push(item);

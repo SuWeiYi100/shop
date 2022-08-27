@@ -34,7 +34,7 @@
 						</view>
 						<view class="item-right">
 							<text class="clamp title">{{item.goods_info.goods_name}}</text>
-							<text class="attr">春装款 L</text>
+							<text class="attr">{{ info }}</text>
 							<text class="price">¥{{item.goods_info.goods_price}}</text>
 							<uni-number-box 
 								class="step"
@@ -90,8 +90,9 @@
 			return {
 				total: 0, //总价格
 				allChecked: false, //全选状态  true|false
-				empty: false, //空白页现实  true|false
+				empty: false,
 				cartList: [],
+                info:'春装款 L'
 			};
 		},
 		onLoad(){
@@ -186,7 +187,7 @@
 				let checked = true;
 				list.forEach(item=>{
 					if(item.checked === true){
-						total += item.price * item.number;
+						total += item.goods_info.goods_price * item.number;
 					}else if(checked === true){
 						checked = false;
 					}
@@ -201,18 +202,12 @@
 				list.forEach(item=>{
 					if(item.checked){
 						goodsData.push({
-							attr_val: item.attr_val,
+							attr_val: this.info,
 							number: item.number
 						})
 					}
 				})
-
-				uni.navigateTo({
-					url: `/pages/order/createOrder?data=${JSON.stringify({
-						goodsData: goodsData
-					})}`
-				})
-				this.$api.msg('跳转下一页 sendData');
+                console.log(goodsData);
 			}
 		}
 	}

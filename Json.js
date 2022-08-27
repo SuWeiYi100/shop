@@ -71,116 +71,7 @@ const goodsList = [{
 	},
 ]
 
-/* 购物车 */
-const cartList = [{
-		id: 1,
-		image: 'https://img.alicdn.com/imgextra/i1/58469516/O1CN018vualZ2KANcp10nhG_!!0-saturn_solar.jpg_468x468q75.jpg_.webp',
-		attr_val: '春装款 L',
-		stock: 15,
-		title: 'OVBE 长袖风衣',
-		price: 278.00,
-		number: 1
-	},
-	{
-		id: 3,
-		image: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2319343996,1107396922&fm=26&gp=0.jpg',
-		attr_val: '激光导航 扫拖一体',
-		stock: 3,
-		title: '科沃斯 Ecovacs 扫地机器人',
-		price: 1348.00,
-		number: 5
-	},
-	{
-		id: 4,
-		image: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2668268226,1765897385&fm=26&gp=0.jpg',
-		attr_val: 'XL',
-		stock: 55,
-		title: '朵绒菲小西装',
-		price: 175.88,
-		number: 1
-	},
-	{
-		id: 5,
-		image: 'https://img.alicdn.com/imgextra/i2/55577118/O1CN01iN2BrH22S5x4VQ5A2_!!0-saturn_solar.jpg_468x468q75.jpg_.webp',
-		attr_val: '520 #粉红色',
-		stock: 15,
-		title: '迪奥（Dior）烈艳唇膏',
-		price: 1089.00,
-		number: 1
-	},
-	{
-		id: 6,
-		image: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1031875829,2994442603&fm=26&gp=0.jpg',
-		attr_val: '樱花味润手霜 30ml',
-		stock: 15,
-		title: "欧舒丹（L'OCCITANE）乳木果",
-		price: 128,
-		number: 1
-	},
-	{
-		id: 7,
-		image: 'https://img.alicdn.com/imgextra/i4/120628541/O1CN015lbaoB2CxpV3YUQFF_!!2-saturn_solar.png_468x468q75.jpg_.webp',
-		attr_val: '特级 12个',
-		stock: 7,
-		title: '新疆阿克苏苹果 特级',
-		price: 58.8,
-		number: 10
-	},
-	{
-		id: 8,
-		image: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2319343996,1107396922&fm=26&gp=0.jpg',
-		attr_val: '激光导航 扫拖一体',
-		stock: 15,
-		title: '科沃斯 Ecovacs 扫地机器人',
-		price: 1348.00,
-		number: 1
-	},
-	{
-		id: 9,
-		image: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2668268226,1765897385&fm=26&gp=0.jpg',
-		attr_val: 'XL',
-		stock: 55,
-		title: '朵绒菲小西装',
-		price: 175.88,
-		number: 1
-	},
-	{
-		id: 10,
-		image: 'https://img.alicdn.com/imgextra/i4/129735368/O1CN01V1N7tk1pWapuIIB2u_!!0-saturn_solar.jpg_468x468q75.jpg_.webp',
-		attr_val: '520 #粉红色',
-		stock: 15,
-		title: '迪奥（Dior）烈艳唇膏',
-		price: 1089.00,
-		number: 1
-	},
-	{
-		id: 11,
-		image: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1031875829,2994442603&fm=26&gp=0.jpg',
-		attr_val: '樱花味润手霜 30ml',
-		stock: 15,
-		title: "欧舒丹（L'OCCITANE）乳木果",
-		price: 128,
-		number: 1
-	},
-	{
-		id: 12,
-		image: 'https://img.alicdn.com/imgextra/i4/355740027/O1CN018LVB6H1C4PRDPLXKO_!!0-saturn_solar.jpg_468x468q75.jpg_.webp',
-		attr_val: '特级 12个',
-		stock: 7,
-		title: '新疆阿克苏苹果 特级',
-		price: 58.8,
-		number: 10
-	},
-	{
-		id: 13,
-		image: 'https://img.alicdn.com/imgextra/i2/54577862/O1CN01Ky4Mpk27wqTRzhWTY_!!0-saturn_solar.jpg_468x468q75.jpg_.webp',
-		attr_val: '春装款/m',
-		stock: 15,
-		title: '女装2019春秋新款',
-		price: 420.00,
-		number: 1
-	}
-];
+
 //详情展示页面
 const detailData = {
 	title: '纯种金毛幼犬活体有血统证书',
@@ -721,7 +612,6 @@ const collections = [
 export default {
     userInfo,
 	carouselList,
-	cartList,
 	detailData,
 	lazyLoadList,
 	shareList,

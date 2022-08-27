@@ -52,6 +52,10 @@
                         //console.log(res);
                         if(res.statusCode == 200){   
                             alert('修改成功');
+                            uni.navigateTo({
+                                url:'/pages/public/login'
+                            })
+                            localStorage.setItem('Authorization', '');
                         }else{
                             alert('修改失败')
                         }
@@ -73,7 +77,7 @@
     	padding-top: 115px;
     	position: relative;
     	width: 100vw;
-    	height: 85.8vh;
+    	height: 100vh;
     	overflow: hidden;
     	background: #fff;
     }
