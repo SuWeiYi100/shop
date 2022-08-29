@@ -25,7 +25,48 @@
             </view>
         </view>
         
+        <view class="c-list">
+        	<view class="c-row b-b" @click="toggleSpec">
+        		<text class="tit">购买类型</text>
+        		<view class="con">
+        			<text class="selected-text" v-for="(sItem, sIndex) in specSelected" :key="sIndex">
+        				{{sItem.name}}
+        			</text>
+        		</view>
+        		<text class="yticon icon-you"></text>
+        	</view>
+        	<view class="c-row b-b">
+        		<text class="tit">优惠券</text>
+        		<text class="con t-r red">领取优惠券</text>
+        		<text class="yticon icon-you"></text>
+        	</view>
+        	<view class="c-row b-b">
+        		<text class="tit">促销活动</text>
+        		<view class="con-list">
+        			<text>新人首单送20元无门槛代金券</text>
+        			<text>订单满50减10</text>
+        			<text>订单满100减30</text>
+        			<text>单笔购买满两件免邮费</text>
+        		</view>
+        	</view>
+        	<view class="c-row b-b">
+        		<text class="tit">服务</text>
+        		<view class="bz-list con">
+        			<text>7天无理由退换货 ·</text>
+        			<text>假一赔十 ·</text>
+        		</view>
+        	</view>
+        </view>
         
+        
+        <view class="detail-desc">
+        	<view class="d-header">
+        		<text>图文详情</text>
+        	</view>
+        	<view class="d-list" v-for="(item,index) in imgList" key="index">
+        	    <image :src="item" class="loaded" mode="aspectFill"></image>
+        	</view>
+        </view>
         
         
         <!-- 底部操作菜单 -->
@@ -59,7 +100,12 @@
                 id:0,
                 imgList: [],
                 goodInfo:{},
-                favorite: false
+                favorite: false,
+                specSelected: [{
+                    id: 1,
+                    pid: 1,
+                    name: 'XL 珊瑚粉',
+                }]
             };
 		},
         onLoad(option) {
@@ -155,58 +201,145 @@
 	}
     
     .introduce-section {
-    		background: #fff;
+        background: #fff;
+        padding: 20upx 30upx;
+
+        .title {
+            font-size: 32upx;
+            color: $font-color-dark;
+            height: 50upx;
+            line-height: 50upx;
+        }
+
+        .price-box {
+            display: flex;
+            align-items: baseline;
+            height: 64upx;
+            padding: 10upx 0;
+            font-size: 26upx;
+            color: $uni-color-primary;
+        }
+
+        .price {
+            font-size: $font-lg + 2upx;
+        }
+
+        .m-price {
+            margin: 0 12upx;
+            color: $font-color-light;
+            text-decoration: line-through;
+        }
+
+        .coupon-tip {
+            align-items: center;
+            padding: 4upx 10upx;
+            background: $uni-color-primary;
+            font-size: $font-sm;
+            color: #fff;
+            border-radius: 6upx;
+            line-height: 1;
+            transform: translateY(-4upx);
+        }
+
+        .bot-row {
+            display: flex;
+            align-items: center;
+            height: 50upx;
+            font-size: $font-sm;
+            color: $font-color-light;
+
+            text {
+                flex: 1;
+            }
+        }
+    }
+    
+    .c-list {
+    	font-size: $font-sm + 2upx;
+    	color: $font-color-base;
+    	background: #fff;
+    
+    	.c-row {
+    		display: flex;
+    		align-items: center;
     		padding: 20upx 30upx;
+    		position: relative;
+    	}
     
-    		.title {
-    			font-size: 32upx;
-    			color: $font-color-dark;
-    			height: 50upx;
-    			line-height: 50upx;
-    		}
+    	.tit {
+    		width: 140upx;
+    	}
     
-    		.price-box {
-    			display: flex;
-    			align-items: baseline;
-    			height: 64upx;
-    			padding: 10upx 0;
-    			font-size: 26upx;
-    			color: $uni-color-primary;
-    		}
+    	.con {
+    		flex: 1;
+    		color: $font-color-dark;
     
-    		.price {
-    			font-size: $font-lg + 2upx;
-    		}
-    
-    		.m-price {
-    			margin: 0 12upx;
-    			color: $font-color-light;
-    			text-decoration: line-through;
-    		}
-    
-    		.coupon-tip {
-    			align-items: center;
-    			padding: 4upx 10upx;
-    			background: $uni-color-primary;
-    			font-size: $font-sm;
-    			color: #fff;
-    			border-radius: 6upx;
-    			line-height: 1;
-    			transform: translateY(-4upx);
-    		}
-    
-    		.bot-row {
-    			display: flex;
-    			align-items: center;
-    			height: 50upx;
-    			font-size: $font-sm;
-    			color: $font-color-light;
-    
-    			text {
-    				flex: 1;
-    			}
+    		.selected-text {
+    			margin-right: 10upx;
     		}
     	}
+    
+    	.bz-list {
+    		height: 40upx;
+    		font-size: $font-sm+2upx;
+    		color: $font-color-dark;
+    
+    		text {
+    			display: inline-block;
+    			margin-right: 30upx;
+    		}
+    	}
+    
+    	.con-list {
+    		flex: 1;
+    		display: flex;
+    		flex-direction: column;
+    		color: $font-color-dark;
+    		line-height: 40upx;
+    	}
+    
+    	.red {
+    		color: $uni-color-primary;
+    	}
+    }
+    
+    .detail-desc {
+    	background: #fff;
+    	margin-top: 16upx;
+    
+    	.d-header {
+    		display: flex;
+    		justify-content: center;
+    		align-items: center;
+    		height: 80upx;
+    		font-size: $font-base + 2upx;
+    		color: $font-color-dark;
+    		position: relative;
+    		text {
+    			padding: 0 20upx;
+    			background: #fff;
+    			position: relative;
+    			z-index: 1;
+    		}
+    		&:after {
+    			position: absolute;
+    			left: 50%;
+    			top: 50%;
+    			transform: translateX(-50%);
+    			width: 300upx;
+    			height: 0;
+    			content: '';
+    			border-bottom: 1px solid #ccc;
+    		}
+    	}
+        .d-list{
+            width: 100%;
+            .loaded{
+                width: 100%;
+                display: block;
+            }
+        }
+    }
     
     .page-bottom {
     		position: fixed;
@@ -221,7 +354,7 @@
     		background: rgba(255, 255, 255, .9);
     		box-shadow: 0 0 20upx 0 rgba(0, 0, 0, .5);
     		border-radius: 16upx;
-    
+            
     		.p-b-btn {
     			display: flex;
     			flex-direction: column;
@@ -230,7 +363,7 @@
     			font-size: $font-sm;
     			color: $font-color-base;
     			width: 96upx;
-    			height: 80upx;
+    			height: 80upx; 
     
     			.yticon {
     				font-size: 40upx;

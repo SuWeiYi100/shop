@@ -101,6 +101,7 @@
 					}
 				}else if(type === 'add'){
 					newValue = value + step;
+                    console.log(newValue);
 					if (newValue >= this.max){
 						this.maxDisabled = true;
 					}

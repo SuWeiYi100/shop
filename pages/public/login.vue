@@ -68,7 +68,7 @@
                     	method: "POST",
                         data: _this.loginForm
                     })
-                    console.log(res);
+                    //console.log(res);
                     if(res.statusCode == 200){
                         _this.userToken = 'Bearer ' + res.data.result.token;
                         _this.userInfo = res.data.result.res.user_name;
